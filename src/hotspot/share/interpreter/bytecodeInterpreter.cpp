@@ -2139,6 +2139,11 @@ run:
       CASE(_new): {
         u2 index = Bytes::get_Java_u2(pc+1);
         ConstantPool* constants = istate->method()->constants();
+        /**
+         * Page 81-82
+         * 代码清单2-1　HotSpot 解释器代码片段
+         * 创建一个新对象的过程
+         */
         if (!constants->tag_at(index).is_unresolved_klass()) {
           // Make sure klass is initialized and doesn't have a finalizer
           Klass* entry = constants->resolved_klass_at(index);
