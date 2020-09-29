@@ -27,6 +27,11 @@
 
 #include "oops/oop.hpp"
 
+/**
+ * Page 83-84
+ * 代码清单2-2　markOop.hpp 片段
+ * 以下注释中描述了虚拟机 Mark Word 的存储布局
+ */
 // The markOop describes the header of an object.
 //
 // Note that the mark is not a real oop but just a word.
