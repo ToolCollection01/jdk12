@@ -389,6 +389,10 @@ JLI_Launch(int argc, char ** argv,              /* main argc, argv */
 
 
 int JNICALL
+// Page 65-66
+// Java Main 方法起点，执行文件选择编译成功的 java
+// 需要配置运行参数 -version -XX:+TraceBytecodes -XX:StopInterpreterAt=<n>
+// 然后去掉 Before Launch 的 Build
 JavaMain(void * _args)
 {
     JavaMainArgs *args = (JavaMainArgs *)_args;
