@@ -150,9 +150,17 @@ void TenuredGeneration::update_counters() {
   }
 }
 
+/**
+ * Page 191-192
+ * 代码清单3-12 空间分配检查的代码片段
+ * 创建一个新对象的过程
+ */
 bool TenuredGeneration::promotion_attempt_is_safe(size_t max_promotion_in_bytes) const {
+  // 老年代最大可用的连续空间
   size_t available = max_contiguous_available();
+  // 每次晋升到老年代的平均大小
   size_t av_promo  = (size_t)gc_stats()->avg_promoted()->padded_average();
+  // 老年代可用空间是否大于平均晋升大小，或者老年代可用空间是否大于此 GC 时新生代所有对象容量
   bool   res = (available >= av_promo) || (available >= max_promotion_in_bytes);
 
   log_trace(gc)("Tenured: promo attempt is%s safe: available(" SIZE_FORMAT ") %s av_promo(" SIZE_FORMAT "), max_promo(" SIZE_FORMAT ")",
